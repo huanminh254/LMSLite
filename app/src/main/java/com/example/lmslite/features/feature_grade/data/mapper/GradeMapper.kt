@@ -1,10 +1,9 @@
 package com.example.lmslite.features.feature_grade.data.mapper
 
-import com.example.lmslite.features.feature_grade.data.local.entity.GradleEntity
+import com.example.lmslite.features.feature_grade.data.local.entity.GradeEntity
 import com.example.lmslite.features.feature_grade.domain.model.Grade
 import com.example.lmslite.features.feature_grade.remote.dto.GradeDto
 
-class GradeMapper {
     //Map từ Json -> Model
     fun GradeDto.toGrade(): Grade{
         return Grade(
@@ -16,8 +15,8 @@ class GradeMapper {
         )
     }
     //Map từ Model -> Entity
-    fun Grade.toGradeEntity(): GradleEntity{
-        return GradleEntity(
+    fun Grade.toGradeEntity(): GradeEntity{
+        return GradeEntity(
             id = id,
             idSubject = idSubject,
             idStudent = idStudent,
@@ -26,8 +25,8 @@ class GradeMapper {
         )
     }
     //Map từ Entity->Json
-    fun GradleEntity.toGrade(): GradeDto{
-        return GradeDto(
+    fun GradeEntity.toGrade(): Grade{
+        return Grade(
             id = id,
             idSubject = idSubject,
             idStudent = idStudent,
@@ -35,4 +34,3 @@ class GradeMapper {
             final = final
         )
     }
-}

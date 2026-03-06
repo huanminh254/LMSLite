@@ -5,8 +5,7 @@ plugins {
     id 'kotlin-parcelize'
     // Lưu ý: Nếu dòng alias dưới đây lỗi, hãy tạm comment nó lại bằng //
     alias(libs.plugins.navigation.safeargs)
-    id 'dagger.hilt.android.plugin'
-}
+    id 'com.google.dagger.hilt.android'}
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
@@ -15,20 +14,30 @@ if (apikeyPropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 32
+    namespace "com.example.lmslite"
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.example.lmslite"
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.example.lmslite.CustomTestRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 
     buildFeatures{
         dataBinding = true
         viewBinding = true
+        buildConfig = true
     }
 
     buildTypes {
@@ -85,13 +94,13 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
     implementation "com.github.bumptech.glide:glide:4.12.0"
 
-    // Thay $hilt_version bằng 2.40.5
-    implementation "com.google.dagger:hilt-android:2.40.5"
-    kapt "com.google.dagger:hilt-android-compiler:2.40.5"
+    // Thay $hilt_version bằng 2.48.1
+    implementation "com.google.dagger:hilt-android:2.48.1"
+    kapt "com.google.dagger:hilt-android-compiler:2.48.1"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation "androidx.activity:activity-ktx:1.9.0"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     def room_version = "2.4.2"
@@ -105,6 +114,6 @@ dependencies {
     testImplementation "junit:junit:4.13.2"
     testImplementation 'com.google.truth:truth:1.1.3'
     androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
-    androidTestImplementation "com.google.dagger:hilt-android-testing:2.40.5"
-    kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.40.5"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:2.48.1"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.48.1"
 }

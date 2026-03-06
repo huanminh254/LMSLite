@@ -7,8 +7,8 @@ import com.example.lmslite.features.features_subject.data.local.entity.SubjectEn
 
 data class GradeWithSubject(
     @Embedded val grade: GradeEntity,
-    @Relation(parentColumn = "studentId", entityColumn = "id")
+    @Relation(parentColumn = "idStudent", entityColumn = "id")
     val student: StudentEntity,
-    @Relation(parentColumn = "subjectId", entityColumn = "id")
+    @Relation(parentColumn = "idSubject", entityColumn = "id")
     val subject: SubjectEntity
 )

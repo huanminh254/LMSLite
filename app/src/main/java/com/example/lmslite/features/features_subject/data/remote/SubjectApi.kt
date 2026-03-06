@@ -7,7 +7,7 @@ import retrofit2.http.Path
 interface SubjectApi {
     @GET("subjects")
     suspend fun getSubjects(): List<SubjectDto>
-    @GET("grades/{id}")
+    @GET("subjects/{id}")
     suspend fun getSubjectId(
         @Path("id") id: Int
     ): SubjectDto
