@@ -18,4 +18,6 @@ interface StudentDao {
     suspend fun deleteStudent(student: StudentEntity)
     @Query("DELETE FROM StudentEntity")
     suspend fun clearAllStudents()
+    @Query("SELECT * FROM StudentEntity WHERE studentCode = :code")
+    suspend fun searchStudentById(code: String): StudentEntity?
 }

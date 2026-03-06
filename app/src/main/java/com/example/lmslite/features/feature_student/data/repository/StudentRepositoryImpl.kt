@@ -2,18 +2,16 @@ package com.example.lmslite.features.feature_student.data.repository
 
 import com.example.lmslite.core.common.Resource
 import com.example.lmslite.features.feature_student.data.local.entity.StudentDao
-import com.example.lmslite.features.feature_student.data.mapper.toEntity
 import com.example.lmslite.features.feature_student.data.mapper.toStudent
 import com.example.lmslite.features.feature_student.data.remote.StudentApi
-import com.example.lmslite.features.feature_student.data.remote.dto.StudentDto
 import com.example.lmslite.features.feature_student.domain.model.Student
 import com.example.lmslite.features.feature_student.domain.repository.StudentRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class StudentRepositoryImpl(
-    private val dbApi: StudentApi,
-    private val dbRoom: StudentDao
+    private val api: StudentApi,
+    private val dao: StudentDao
 ): StudentRepository {
 
     override fun getAllStudents(): Flow<Resource<List<Student>>> = flow {
@@ -42,5 +40,16 @@ class StudentRepositoryImpl(
             emit(Resource.Error("Lỗi: ${e.message}"))
         }
         */
+    }
+
+    override fun searchStudentById(code: String): Flow<Resource<Student?>> = flow {
+        emit(Resource.Loading())
+        try {
+            val studentEntity = dao.searchStudentById(code)
+            val student = studentEntity?.toStudent()
+            emit(Resource.Success(student))
+        }catch (e: Exception){
+            emit(Resource.Error("Lỗi: ${e.message}"))
+        }
     }
 }

@@ -82,20 +82,20 @@ fun StudentItem(student: Student) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 4.dp), // Khoảng cách bên ngoài Card
+            .padding(horizontal = 16.dp, vertical = 4.dp)
     ) {
         Row(
             modifier = Modifier
-                .padding(16.dp) // Khoảng cách bên trong Card
+                .padding(16.dp)
                 .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically // Căn giữa Avatar và Chữ theo chiều dọc
+            verticalAlignment = Alignment.CenterVertically
         ) {
             // 1. Hình tròn đại diện (Avatar)
             Box(
                 modifier = Modifier
-                    .size(50.dp) // Tăng kích thước lên một chút cho dễ nhìn
+                    .size(50.dp)
                     .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary), // Dùng màu chủ đạo của App
+                    .background(MaterialTheme.colorScheme.primary),
                 contentAlignment = Alignment.Center
             ) {
                 Text(

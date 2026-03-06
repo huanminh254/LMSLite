@@ -39,4 +39,27 @@ class StudentViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope) //tự động dừng cập nhật đến UI
     }
+    fun onSearchCodeChanged(code: String){
+        _state.value = _state.value.copy(searchCode = code)
+    }
+    fun checkSearch(){
+        val code = _state.value.searchCode
+        if(code.isBlank()) {
+            getStudent()
+            return
+        }
+        repo.searchStudentById(code).onEach { result->
+            _state.value = when(result){
+                is Resource.Loading -> _state.value.copy(isLoading = true, error = null)
+                is Resource.Success -> {
+                    val list = result.data?.let { listOf(result.data) } ?: emptyList()
+                    _state.value.copy(isLoading = false, students = list)
+                }
+                is Resource.Error -> _state.value.copy(isLoading = false, error = result.message)
+            }
+        }.launchIn(viewModelScope)
+    }
+    fun searchById(code: String){
+        val search = _state.value.searchCode
+    }
 }

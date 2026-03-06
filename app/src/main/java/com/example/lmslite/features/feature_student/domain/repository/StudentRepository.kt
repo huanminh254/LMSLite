@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface StudentRepository {
     fun getAllStudents(): Flow<Resource<List<Student>>>
+    fun searchStudentById(code: String): Flow<Resource<Student?>>
 }

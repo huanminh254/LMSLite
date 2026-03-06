@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.lmslite.app.di.FindGradeyIdCodeStudent
 import com.example.lmslite.app.di.StudentScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +24,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    StudentScreen()
+//                    StudentScreen()
+                    FindGradeyIdCodeStudent()
                 }
             }
         }
