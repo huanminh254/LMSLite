@@ -12,14 +12,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GradeRepositoryImpl (
-    private val dbApi: GradeApi,private val dbRoom: GradeDao
+    private val api: GradeApi,private val dao: GradeDao
 ): GradeRepository {
     override fun getAllGrades(): Flow<Resource<List<Grade>>> = flow {
         emit(Resource.Loading())
         try {
-            val resultApi: List<GradeDto> = dbApi.getGrades()
+            val resultApi: List<GradeDto> = api.getGrades()
             val dbModel: List<Grade> = resultApi.map { it.toGrade() }
             val dbEntity = dbModel.map { it.toGradeEntity() }
+            dao.clearAllGrades()
+            dao.insertGrade(dbEntity)
             emit(Resource.Success(dbModel))
         }catch (e: Exception){
             emit(Resource.Error(message = "Loi ket noi ${e.message}"))

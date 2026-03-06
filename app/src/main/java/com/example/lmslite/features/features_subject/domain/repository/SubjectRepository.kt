@@ -6,5 +6,5 @@ import com.example.lmslite.features.features_subject.domain.model.Subject
 import kotlinx.coroutines.flow.Flow
 
 interface SubjectRepository {
-    suspend fun getAllSubjects(): Flow<Resource<List<Subject>>>
+    fun getAllSubjects(): Flow<Resource<List<Subject>>>
 }

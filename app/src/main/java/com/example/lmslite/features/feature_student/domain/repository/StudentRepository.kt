@@ -5,5 +5,5 @@ import com.example.lmslite.features.feature_student.domain.model.Student
 import kotlinx.coroutines.flow.Flow
 
 interface StudentRepository {
-    suspend fun getAllStudents(): Flow<Resource<List<Student>>>
+    fun getAllStudents(): Flow<Resource<List<Student>>>
 }

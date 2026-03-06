@@ -6,7 +6,6 @@ plugins {
     id("com.google.dagger.hilt.android") version "2.51" apply false
 }
 
-// Thay thế cho khối ext cũ
 val kotlinVersion by extra("1.9.24")
 val hiltVersion by extra("2.51")
 val roomVersion by extra("2.6.1")

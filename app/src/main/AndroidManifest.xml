@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".app.LmsApplication"
         android:theme="@style/Theme.LMSLite">
         <activity
             android:name=".app.MainActivity"

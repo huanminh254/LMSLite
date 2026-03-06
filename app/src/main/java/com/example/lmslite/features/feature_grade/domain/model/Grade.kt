@@ -7,5 +7,5 @@ class Grade(
     val idSubject: Int,
     val idStudent: Int,
     val process: Float? = null,
-    val final: Float? = null
+    val finalGrade: Float? = null
 )

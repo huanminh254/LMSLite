@@ -8,5 +8,5 @@ data class GradeDto(
     @field:Json(name = "id_subject") val idSubject: Int,
     @field:Json(name = "id_student")val idStudent: Int,
     @field:Json(name = "process")val process: Float? = null,
-    @field:Json(name = "final")val final: Float? = null
+    @field:Json(name = "finalGrade")val finalGrade: Float? = null
 )

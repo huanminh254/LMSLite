@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.Flow
 interface GradeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGrade(grades: List<GradeEntity>)
-    @Query("SELECT * FROM gradeentity")
+    @Query("SELECT * FROM grades")
     fun getAllGrades(): Flow<List<GradeEntity>>
     @Delete
     suspend fun deleteGrade(grade: GradeEntity)
-    @Query("DELETE FROM gradeentity")
+    @Query("DELETE FROM grades")
     suspend fun clearAllGrades()
 }

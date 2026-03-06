@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.lmslite.core.Database.AppDatabase
 import com.example.lmslite.features.feature_grade.data.repository.GradeRepositoryImpl
+import com.example.lmslite.features.feature_grade.domain.model.Grade
 import com.example.lmslite.features.feature_grade.domain.repository.GradeRepository
 import com.example.lmslite.features.feature_grade.remote.GradeApi
 import com.example.lmslite.features.feature_student.data.remote.StudentApi
@@ -46,6 +47,9 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSubjectApi(retrofit: Retrofit): SubjectApi = retrofit.create(SubjectApi::class.java)
+    @Provides
+    @Singleton
+    fun provideGradeApi(retrofit: Retrofit): GradeApi = retrofit.create(GradeApi::class.java)
     @Provides
     @Singleton
     fun provideStudentRepository(db: AppDatabase, api: StudentApi): StudentRepository{

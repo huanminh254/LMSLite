@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.flow
 class SubjectRepositoryImpl(
     private val dbApi: SubjectApi, private val dbRoom: SubjectDao
 ): SubjectRepository {
-    override suspend fun getAllSubjects(): Flow<Resource<List<Subject>>> = flow {
+    override fun getAllSubjects(): Flow<Resource<List<Subject>>> = flow {
         emit(Resource.Loading())
         try{
             val resultApi: List<SubjectDto> = dbApi.getSubjects()

@@ -11,7 +11,7 @@ import com.example.lmslite.features.feature_grade.remote.dto.GradeDto
             idSubject = idSubject,
             idStudent = idStudent,
             process = process,
-            final = final
+            finalGrade = finalGrade
         )
     }
     //Map từ Model -> Entity
@@ -21,7 +21,7 @@ import com.example.lmslite.features.feature_grade.remote.dto.GradeDto
             idSubject = idSubject,
             idStudent = idStudent,
             process = process,
-            final = final
+            finalGrade = finalGrade
         )
     }
     //Map từ Entity->Json
@@ -31,6 +31,6 @@ import com.example.lmslite.features.feature_grade.remote.dto.GradeDto
             idSubject = idSubject,
             idStudent = idStudent,
             process = process,
-            final = final
+            finalGrade = finalGrade
         )
     }
