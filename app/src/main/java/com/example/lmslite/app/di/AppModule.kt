@@ -3,6 +3,9 @@ package com.example.lmslite.app.di
 import android.app.Application
 import androidx.room.Room
 import com.example.lmslite.core.Database.AppDatabase
+import com.example.lmslite.features.feature_grade.data.repository.GradeRepositoryImpl
+import com.example.lmslite.features.feature_grade.domain.repository.GradeRepository
+import com.example.lmslite.features.feature_grade.remote.GradeApi
 import com.example.lmslite.features.feature_student.data.remote.StudentApi
 import com.example.lmslite.features.feature_student.data.repository.StudentRepositoryImpl
 import com.example.lmslite.features.feature_student.domain.repository.StudentRepository
@@ -52,5 +55,10 @@ object AppModule {
     @Singleton
     fun provideSubjectRepository(db: AppDatabase, api: SubjectApi): SubjectRepository{
         return SubjectRepositoryImpl(api, db.subjectDao)
+    }
+    @Provides
+    @Singleton
+    fun provideGradeRepository(db: AppDatabase, api: GradeApi): GradeRepository {
+        return GradeRepositoryImpl(api, db.gradeDao)
     }
 }
