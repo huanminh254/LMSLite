@@ -25,8 +25,6 @@ class StudentRepositoryImpl(
     override fun getAllStudents(): Flow<Resource<List<Student>>> = flow {
         emit(Resource.Loading())
         val test = dao.getAllStudents().first() //
-        if(test.isEmpty())
-        {
             try{
                 val studentsApi = api.getStudents()
                 val studentModel = studentsApi.map{it.toStudent()}
@@ -36,7 +34,6 @@ class StudentRepositoryImpl(
             }catch (e: Exception){
                 emit(Resource.Error("Không thể cập nhật từ server: ${e.message}"))
             }
-        }
             dao.getAllStudents().collect { result->
                 val students = result.map { it.toStudent() }
                 emit(Resource.Success(students))

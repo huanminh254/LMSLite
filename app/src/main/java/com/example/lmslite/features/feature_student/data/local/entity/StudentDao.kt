@@ -19,6 +19,8 @@ interface StudentDao {
     @Query("DELETE FROM StudentEntity")
     suspend fun clearAllStudents()
 
-    @Query("SELECT * FROM StudentEntity WHERE studentCode LIKE '%' || trim(:code) || '%' COLLATE NOCASE")
+    @Query("""
+    SELECT * FROM StudentEntity 
+    WHERE REPLACE(studentCode, ' ', '') LIKE '%' || REPLACE(:code, ' ', '') || '%'COLLATE NOCASE""")
     suspend fun searchStudentById(code: String): StudentEntity?
 }
