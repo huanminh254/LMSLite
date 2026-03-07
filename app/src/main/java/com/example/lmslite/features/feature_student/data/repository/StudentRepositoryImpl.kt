@@ -17,11 +17,6 @@ class StudentRepositoryImpl(
     override fun getAllStudents(): Flow<Resource<List<Student>>> = flow {
         // 1. Báo cho UI hiện vòng xoay Loading
         emit(Resource.Loading())
-
-        // 2. Giả lập delay mạng cho giống thật
-        kotlinx.coroutines.delay(1000)
-
-        // 3. Tạo danh sách sinh viên giả (Mock Data)
         val mockStudents = listOf(
             Student(id = 1, name = "Nguyễn Văn Huân", studentCode = "TLU001", email = "huan@tlu.edu.vn"),
             Student(id = 2, name = "Linh Xinh", studentCode = "TLU002", email = "linh@tlu.edu.vn"),
@@ -43,13 +38,5 @@ class StudentRepositoryImpl(
     }
 
     override fun searchStudentById(code: String): Flow<Resource<Student?>> = flow {
-        emit(Resource.Loading())
-        try {
-            val studentEntity = dao.searchStudentById(code)
-            val student = studentEntity?.toStudent()
-            emit(Resource.Success(student))
-        }catch (e: Exception){
-            emit(Resource.Error("Lỗi: ${e.message}"))
-        }
     }
 }
