@@ -10,14 +10,15 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface StudentDao {
-    @Query("SELECT * FROM studententity")
+    @Query("SELECT * FROM StudentEntity")
     fun getAllStudents(): Flow<List<StudentEntity>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStudents(students: List<StudentEntity>)
-    @Delete
-    suspend fun deleteStudent(student: StudentEntity)
+
     @Query("DELETE FROM StudentEntity")
     suspend fun clearAllStudents()
-    @Query("SELECT * FROM StudentEntity WHERE studentCode = :code")
+
+    @Query("SELECT * FROM StudentEntity WHERE studentCode LIKE '%' || trim(:code) || '%' COLLATE NOCASE")
     suspend fun searchStudentById(code: String): StudentEntity?
 }

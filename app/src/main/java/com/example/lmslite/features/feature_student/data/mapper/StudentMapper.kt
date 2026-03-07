@@ -7,10 +7,10 @@ import com.example.lmslite.features.feature_student.domain.model.Student
 //Map từ API về model
 fun StudentDto.toStudent(): Student{
     return Student(
-        id = id?: 0,
-        name = fullName?: "Unknown",
-        studentCode = code ?: "Unknown",
-        email = contactEmail ?: "Unknown"
+        id = id?.toIntOrNull() ?: 0,
+        name = name?: "Unknown",
+        studentCode = studentCode ?: "Unknown",
+        email = email ?: "Unknown"
     )
 }
 //Map từ Model sang Entity

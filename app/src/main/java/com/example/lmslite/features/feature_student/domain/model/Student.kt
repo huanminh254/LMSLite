@@ -1,7 +1,5 @@
 package com.example.lmslite.features.feature_student.domain.model
 
-import androidx.room.PrimaryKey
-
 
 data class Student(
     val id: Int,

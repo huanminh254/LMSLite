@@ -19,9 +19,9 @@ class StudentViewModel @Inject constructor(
 ): ViewModel() {
     private val _state = MutableStateFlow(StudentState())
     val state = _state.asStateFlow() // UI chỉ được đọc data mà không động đến được
-//    init {
-//        getStudent()
-//    }
+    init {
+        getStudent()
+    }
     private fun getStudent(){
         repo.getAllStudents().onEach { result->
             _state.value = when(result){
@@ -44,7 +44,7 @@ class StudentViewModel @Inject constructor(
         _state.value = _state.value.copy(isLoading = true, error = null)
         val code = _state.value.searchCode
         if(code.isBlank()){
-            _state.value.copy(
+            _state.value = _state.value.copy(
                 isLoading = false,
                 error = "Lỗi Nhập Dữ Liệu"
             )

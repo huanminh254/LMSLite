@@ -33,23 +33,7 @@ object AppModule {
             AppDatabase.DATABASE_NAME
         ).fallbackToDestructiveMigration().build() // tự động xoá bản cũ khi thêm/xoá cột và tạo bản mới tránh crash
     }
-    @Provides
-    @Singleton
-    fun provideRetrofit(): Retrofit{ //gọi API từ Server
-        return Retrofit.Builder()
-            .baseUrl("https://get/") // đến url
-            .addConverterFactory(MoshiConverterFactory.create()) //MoshiConverterFactory dùng để đọc json
-            .build()
-    }
-    @Provides
-    @Singleton
-    fun provideStudentApi(retrofit: Retrofit): StudentApi = retrofit.create(StudentApi::class.java)
-    @Provides
-    @Singleton
-    fun provideSubjectApi(retrofit: Retrofit): SubjectApi = retrofit.create(SubjectApi::class.java)
-    @Provides
-    @Singleton
-    fun provideGradeApi(retrofit: Retrofit): GradeApi = retrofit.create(GradeApi::class.java)
+
     @Provides
     @Singleton
     fun provideStudentRepository(db: AppDatabase, api: StudentApi): StudentRepository{

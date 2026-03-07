@@ -5,11 +5,11 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface StudentApi {
-    @GET("students")
+    @GET("student") //Url lấy db từ api
     suspend fun getStudents(): List<StudentDto>
-    @GET("students/{id}")
+    @GET("student/{id}")
     suspend fun getStudentId(
-        @Path("id") id: Int
-    ): StudentDto
+        @Path("id") id: String
+    ): StudentDto //Trả về 1 object JSON
 
 }
